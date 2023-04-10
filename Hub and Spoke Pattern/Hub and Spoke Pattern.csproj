@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Hub_and_Spoke_Pattern</RootNamespace>
   </PropertyGroup>
 
 </Project>
