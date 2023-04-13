@@ -1,3 +1,7 @@
+using CurrencyDisplay.Interfaces;
+using CurrencyDisplay.Services;
+using MediatR;
+
 namespace CurrencyDisplay.DTO;
 
 /// <summary>
@@ -5,5 +9,5 @@ namespace CurrencyDisplay.DTO;
 /// </summary>
 /// <param name="FromCurrency">The currency being exchanged e.g. ZAR</param>
 /// <param name="ToCurrency">The currency being converted to e.g. USD</param>
-/// <param name="CurrencyConversionRate">The amount of the target currency received for each "unit" of the original currency.</param>
-public record PriceUpdate(string FromCurrency, string ToCurrency, double CurrencyConversionRate);
+/// <param name="ExchangeRate">The amount of the target currency received for each "unit" of the original currency.</param>
+public record PriceUpdate(string FromCurrency, string ToCurrency, double ExchangeRate) : IUiBusEvent;

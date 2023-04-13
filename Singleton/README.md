@@ -1,0 +1,1 @@
+Recreation of work covered in the following [pluralsight course](https://app.pluralsight.com/library/courses/c-sharp-10-design-patterns/table-of-contents)
