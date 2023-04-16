@@ -28,10 +28,17 @@
         _exchangeRate = priceUpdate.ExchangeRate;
         InvokeAsync(StateHasChanged);
     }
-
-    protected override void OnInitialized()
+    
+    
+    protected override Task OnAfterRenderAsync(bool firstRender)
     {
-        Bus.Register(this);
+        if (firstRender)
+        {
+            Bus.Register(this);    
+        }
+        
+        return base.OnAfterRenderAsync(firstRender);   
     }
-
+    
+    
 }
