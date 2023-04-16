@@ -12,7 +12,6 @@
   </div>
 </div>
 
-
 @code {
     
     [Parameter, EditorRequired]
@@ -29,7 +28,6 @@
         InvokeAsync(StateHasChanged);
     }
     
-    
     protected override Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -39,6 +37,4 @@
         
         return base.OnAfterRenderAsync(firstRender);   
     }
-    
-    
 }
