@@ -1,1 +1,1 @@
-Code sample for my article on the [Hub and Spoke](https://thatstatsguy.github.io/blog/2023/Hub-and-Spoke-Pattern-Part-2/) pattern in Blazor.
+Code sample for my article on the [Hub and Spoke](https://thatstatsguy.github.io/blog/2023/Hub-and-Spoke-Pattern-Part-3/) pattern in Blazor.
