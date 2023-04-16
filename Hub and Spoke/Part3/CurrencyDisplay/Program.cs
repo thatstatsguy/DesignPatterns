@@ -1,3 +1,4 @@
+using System.Reflection;
 using CurrencyDisplay.Interfaces;
 using CurrencyDisplay.Services;
 using Microsoft.AspNetCore.Builder;
@@ -10,8 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IUiBus, VisualsUpdateBus>();
-
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

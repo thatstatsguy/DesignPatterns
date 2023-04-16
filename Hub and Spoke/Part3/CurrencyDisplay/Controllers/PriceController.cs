@@ -1,6 +1,7 @@
 using CurrencyDisplay.DTO;
 using CurrencyDisplay.Interfaces;
 using CurrencyDisplay.Services;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CurrencyDisplay.Controllers;
@@ -9,15 +10,15 @@ namespace CurrencyDisplay.Controllers;
 [Route("[controller]/[action]")]
 public class PriceController : Controller
 {
-    private readonly IUiBus _eventBus;
-    public PriceController(IUiBus eventBus)
+    private readonly IMediator _mediator;
+    public PriceController(IMediator mediator)
     {
-        _eventBus = eventBus;
+        _mediator = mediator;
     }
     [HttpPost]
     public IActionResult Update([FromBody] PriceUpdate priceUpdate)
     {
-        _eventBus.Notify(priceUpdate);
+        _mediator.Publish(priceUpdate);
         return Ok("Price Update Processed");
     }    
 }

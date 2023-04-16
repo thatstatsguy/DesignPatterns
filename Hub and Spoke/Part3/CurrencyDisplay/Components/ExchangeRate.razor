@@ -2,8 +2,9 @@
 @using System.Threading
 @using CurrencyDisplay.Interfaces
 @using CurrencyDisplay.Services
-@implements CurrencyDisplay.Interfaces.IListener<PriceUpdate>
-@inject IUiBus Bus
+@using MediatR
+@implements INotificationHandler<PriceUpdate>
+
 <div class="card m-3">
   <div class="card-body">
       <p>From: @FromCurrency</p>
@@ -21,20 +22,12 @@
     
     private double _exchangeRate;
     
-    public void Handle(PriceUpdate priceUpdate)
+    public Task Handle(PriceUpdate priceUpdate, CancellationToken cancellationToken)
     {
-        if (FromCurrency != priceUpdate.FromCurrency || ToCurrency != priceUpdate.ToCurrency) return;
+        if (FromCurrency != priceUpdate.FromCurrency || ToCurrency != priceUpdate.ToCurrency) return Task.CompletedTask;
         _exchangeRate = priceUpdate.ExchangeRate;
         InvokeAsync(StateHasChanged);
+        return Task.CompletedTask;
     }
-    
-    protected override Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            Bus.Register(this);    
-        }
-        
-        return base.OnAfterRenderAsync(firstRender);   
-    }
+
 }
