@@ -1,3 +1,5 @@
+using CurrencyDisplay.Components;
+
 namespace CurrencyDisplay.Interfaces;
 
 public interface IUiBus

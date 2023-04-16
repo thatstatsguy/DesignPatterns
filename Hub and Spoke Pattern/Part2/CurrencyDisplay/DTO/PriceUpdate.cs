@@ -1,6 +1,4 @@
 using CurrencyDisplay.Interfaces;
-using CurrencyDisplay.Services;
-using MediatR;
 
 namespace CurrencyDisplay.DTO;
 
