@@ -17,6 +17,6 @@ public class PriceController : Controller
     public IActionResult Update([FromBody] PriceUpdate priceUpdate)
     {
         _eventBus.Notify(priceUpdate);
-        return Ok("TODO");
+        return Ok("Price Update Processed");
     }    
 }
