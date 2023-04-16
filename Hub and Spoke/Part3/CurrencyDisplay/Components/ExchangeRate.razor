@@ -1,0 +1,40 @@
+@using CurrencyDisplay.DTO
+@using System.Threading
+@using CurrencyDisplay.Interfaces
+@using CurrencyDisplay.Services
+@implements CurrencyDisplay.Interfaces.IListener<PriceUpdate>
+@inject IUiBus Bus
+<div class="card m-3">
+  <div class="card-body">
+      <p>From: @FromCurrency</p>
+      <p>To: @ToCurrency</p>
+      <p>ExchangeRate: @_exchangeRate</p>
+  </div>
+</div>
+
+@code {
+    
+    [Parameter, EditorRequired]
+    public string FromCurrency { get; set; }
+    [Parameter, EditorRequired]
+    public string ToCurrency { get; set; }
+    
+    private double _exchangeRate;
+    
+    public void Handle(PriceUpdate priceUpdate)
+    {
+        if (FromCurrency != priceUpdate.FromCurrency || ToCurrency != priceUpdate.ToCurrency) return;
+        _exchangeRate = priceUpdate.ExchangeRate;
+        InvokeAsync(StateHasChanged);
+    }
+    
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Bus.Register(this);    
+        }
+        
+        return base.OnAfterRenderAsync(firstRender);   
+    }
+}

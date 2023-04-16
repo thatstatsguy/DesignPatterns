@@ -1,0 +1,1 @@
+Code sample for my article on the [Hub and Spoke](https://thatstatsguy.github.io/blog/2023/Hub-and-Spoke-Pattern-Part-1/) pattern in Blazor.
