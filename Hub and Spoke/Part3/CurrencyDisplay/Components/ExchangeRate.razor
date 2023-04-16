@@ -21,13 +21,6 @@
     
     private double _exchangeRate;
     
-    public Task Handle(PriceUpdate priceUpdate, CancellationToken cancellationToken)
-    {
-        if (FromCurrency != priceUpdate.FromCurrency || ToCurrency != priceUpdate.ToCurrency) return Task.CompletedTask;
-        _exchangeRate = priceUpdate.ExchangeRate;
-        InvokeAsync(StateHasChanged);
-        return Task.CompletedTask;
-    }
     void HandleNotification(PriceUpdate priceUpdate, CancellationToken cancellationToken)
     {
         if (FromCurrency != priceUpdate.FromCurrency || ToCurrency != priceUpdate.ToCurrency) return;
